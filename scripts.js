@@ -6,8 +6,8 @@ const speedButton = document.querySelector('input[name="playbackRate"]');
 const viewer= document.querySelector('.viewer');
 const progressBar = document.querySelector('.progress__filled');
 const progress = document.querySelector('.progress');
-console.log(progressBar);
-console.log(progress);
+const fullscreenButton = document.querySelector('.full-screen');
+
 const video = document.querySelector('.player__video');
 
 // play-pause the video
@@ -55,6 +55,13 @@ function scrub(e){
 
 }
 
+//fullscreen
+function fullscreen(){
+    if(video.requestFullscreen){
+        video.requestFullscreen();
+    }
+}
+
 
 video.addEventListener('timeupdate', handleProgress);
 viewer.addEventListener('click', playPause);
@@ -74,3 +81,5 @@ progress.addEventListener('click', scrub);
 progress.addEventListener('mousemove', (e) => mousedown && scrub(e));
 progress.addEventListener('mousedown', () => mousedown = true);
 progress.addEventListener('mouseup', () => mousedown = false);
+
+fullscreenButton.addEventListener('click', fullscreen);
